@@ -183,8 +183,12 @@
       "bases:Crear nueva base": false
     }
   },
-  "active": "8bcd8846ff0e3639",
+  "active": "0114071eb13c02d5",
   "lastOpenFiles": [
+    "components/home/MembershipEntry.tsx",
+    "components/home/BragoRoutes.tsx",
+    "components/home/BragoCityMap.tsx",
+    "components/home/IntentSelector.tsx",
     "node_modules/fsevents/package.json",
     "node_modules/fsevents/fsevents.node",
     "node_modules/fsevents/fsevents.js",
@@ -197,10 +201,6 @@
     "CUSTOMER_SEGMENTS.md",
     "node_modules/@rtsao/scc/README.md",
     "~$FORME_ESTRATEGICO_BRAGO_SMA.docx",
-    "~$CENSO_URBANO_SMA_BRAGO.xlsx",
-    "INDICE_PROYECTO.txt",
-    "INFORME_ESTRATEGICO_BRAGO_SMA.docx",
-    "CENSO_URBANO_SMA_BRAGO.xlsx",
     "SALES_PLAYBOOK.md",
     "EXECUTIVE_SUMMARY.md",
     "README.md",

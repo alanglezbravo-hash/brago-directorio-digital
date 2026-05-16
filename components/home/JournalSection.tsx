@@ -20,16 +20,24 @@ export function JournalSection() {
               <span className="h-px w-6 bg-brago-gold/50" />
               <span className="text-2xs tracking-widest-3 uppercase text-brago-gold/70 font-medium">Medio editorial</span>
             </div>
-            <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-brago-cream leading-tight">
+            <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-brago-cream leading-tight mb-2">
               BRAGO Journal
             </h2>
+            <p className="text-xs tracking-widest uppercase text-brago-cream/25 font-medium">
+              San Miguel Issue No. 01 · {new Date().getFullYear()}
+            </p>
           </div>
-          <Link
-            href="/journal"
-            className="text-2xs tracking-widest uppercase font-medium text-brago-gold/70 hover:text-brago-gold transition-colors duration-300 flex items-center gap-2 self-start lg:self-auto"
-          >
-            Leer todo el Journal <span>→</span>
-          </Link>
+          <div className="flex flex-col items-start lg:items-end gap-3">
+            <p className="text-sm text-brago-cream-3 font-light max-w-xs leading-relaxed text-left lg:text-right">
+              Cultura, real estate, gastronomía e inversión leídos desde el criterio editorial.
+            </p>
+            <Link
+              href="/journal"
+              className="text-2xs tracking-widest uppercase font-medium text-brago-gold/70 hover:text-brago-gold transition-colors duration-300 flex items-center gap-2"
+            >
+              Leer todo el Journal <span>→</span>
+            </Link>
+          </div>
         </AnimatedSection>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-brago-cream/6">

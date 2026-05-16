@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils'
 
 const navLinks = [
   { label: 'Directorio',  href: '/directorio' },
+  { label: 'Mapa',        href: '/#mapa' },
   { label: 'Real Estate', href: '/real-estate' },
   { label: 'Journal',     href: '/journal' },
   { label: 'Eventos',     href: '/eventos' },
@@ -135,7 +136,7 @@ export function Navbar() {
                   href={link.href}
                   className={cn(
                     'text-2xs tracking-widest uppercase font-medium transition-colors duration-300',
-                    pathname === link.href
+                    pathname === link.href || (link.href === '/#mapa' && pathname === '/')
                       ? 'text-brago-gold'
                       : 'text-brago-cream-2 hover:text-brago-cream',
                   )}
