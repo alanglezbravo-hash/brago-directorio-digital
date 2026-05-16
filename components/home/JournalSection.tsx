@@ -17,14 +17,17 @@ export function JournalSection() {
         <AnimatedSection className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16 lg:mb-20">
           <div>
             <div className="flex items-center gap-4 mb-5">
-              <span className="h-px w-6 bg-brago-gold/50" />
-              <span className="text-2xs tracking-widest-3 uppercase text-brago-gold/70 font-medium">Medio editorial</span>
+              <span className="h-px w-6 bg-brago-azul/60" />
+              <span className="text-2xs tracking-widest-3 uppercase text-brago-azul/80 font-medium">Medio editorial</span>
+              <span className="w-1 h-1 bg-brago-rosa rotate-45 inline-block" />
             </div>
             <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-brago-cream leading-tight mb-2">
               BRAGO Journal
             </h2>
-            <p className="text-xs tracking-widest uppercase text-brago-cream/25 font-medium">
-              San Miguel Issue No. 01 · {new Date().getFullYear()}
+            <p className="text-xs tracking-widest uppercase text-brago-cream/30 font-medium">
+              <span className="text-brago-azul">San Miguel Issue No. 01</span>
+              <span className="text-brago-cream/20 mx-2">·</span>
+              <span>{new Date().getFullYear()}</span>
             </p>
           </div>
           <div className="flex flex-col items-start lg:items-end gap-3">

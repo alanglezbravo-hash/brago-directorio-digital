@@ -18,16 +18,17 @@ html {
 }
 
 body {
-  background-color: #080806;
-  color: #F0EEE8;
+  background-color: #0A0A0A;
+  color: #F3EEE6;
   font-family: var(--font-inter);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'kern', 'liga', 'calt', 'ss01';
 }
 
 ::selection {
-  background-color: #C8A96E;
-  color: #080806;
+  background-color: #B9654D; /* Terracota */
+  color: #F3EEE6;
 }
 
 /* Scrollbar */
@@ -35,11 +36,27 @@ body {
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #080806;
+  background: #0A0A0A;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C8A96E;
+  background: #C4AD87;
   border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B9654D;
+}
+
+/* Editorial — subtle horizontal accent line utility */
+.brago-divider {
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(196, 173, 135, 0.25) 40%,
+    rgba(185, 101, 77, 0.35) 50%,
+    rgba(196, 173, 135, 0.25) 60%,
+    transparent 100%
+  );
+  height: 1px;
 }
 
 /* Utility classes */

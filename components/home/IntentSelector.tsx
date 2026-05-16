@@ -6,11 +6,13 @@ import { motion } from 'framer-motion'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
 import { cn } from '@/lib/utils'
 
+// Each intent has an accent color drawn from the BRAGO V3 palette
 const intents = [
   {
     id: 'comer',
     label: 'Comer',
     icon: '◈',
+    accent: '#B9654D', // terracota
     desc: 'Mesas, rooftops y conceptos que definen la vida social de San Miguel.',
     href: '/directorio?categoria=Restaurante',
     count: '24 seleccionados',
@@ -19,6 +21,7 @@ const intents = [
     id: 'hospedarte',
     label: 'Hospedarte',
     icon: '◇',
+    accent: '#C4AD87', // champaña
     desc: 'Hoteles boutique y haciendas curadas para quienes no quieren más de lo mismo.',
     href: '/directorio?categoria=Hotel',
     count: '12 seleccionados',
@@ -27,6 +30,7 @@ const intents = [
     id: 'vivir',
     label: 'Vivir',
     icon: '●',
+    accent: '#4E5B4A', // verde tapiz
     desc: 'Colonias, estilos de vida y comunidades para quienes vienen a quedarse.',
     href: '/real-estate',
     count: '9 zonas analizadas',
@@ -35,6 +39,7 @@ const intents = [
     id: 'invertir',
     label: 'Invertir',
     icon: '▲',
+    accent: '#0E334B', // azul petróleo
     desc: 'Colonias, propiedades y señales urbanas para leer el futuro de la ciudad.',
     href: '/real-estate#intelligence',
     count: 'Urban Score activo',
@@ -43,6 +48,7 @@ const intents = [
     id: 'arte',
     label: 'Arte & Cultura',
     icon: '○',
+    accent: '#E08BA0', // rosa empolvado
     desc: 'Galerías, museos, talleres y el pulso creativo que define el carácter de la ciudad.',
     href: '/directorio?categoria=Galería',
     count: '18 seleccionados',
@@ -51,6 +57,7 @@ const intents = [
     id: 'eventos',
     label: 'Eventos',
     icon: '◆',
+    accent: '#7A1635', // vino patrimonial
     desc: 'La agenda privada y pública de San Miguel. Noches, cenas, openings y experiencias.',
     href: '/eventos',
     count: 'Agenda activa',
@@ -59,6 +66,7 @@ const intents = [
     id: 'experiencias',
     label: 'Experiencias',
     icon: '◉',
+    accent: '#0A4E49', // malaquita
     desc: 'Rutas, talleres, degustaciones y vivencias que no aparecen en ninguna guía turística.',
     href: '/directorio?categoria=Experiencias',
     count: '11 seleccionados',
@@ -67,6 +75,7 @@ const intents = [
     id: 'real-estate',
     label: 'Real Estate',
     icon: '⬡',
+    accent: '#1978A8', // azul mexicano
     desc: 'Propiedades, desarrollos y patrimonio inmobiliario bajo la lupa editorial de BRAGO.',
     href: '/real-estate',
     count: 'Próximamente',
@@ -109,18 +118,28 @@ export function IntentSelector() {
                 href={intent.href}
                 onMouseEnter={() => setHovered(intent.id)}
                 onMouseLeave={() => setHovered(null)}
-                className="group flex flex-col p-7 lg:p-8 bg-brago-black hover:bg-brago-black-2 transition-all duration-400 min-h-[190px] lg:min-h-[230px]"
+                className="group relative flex flex-col p-7 lg:p-8 bg-brago-black hover:bg-brago-black-2 transition-all duration-400 min-h-[190px] lg:min-h-[230px] overflow-hidden"
               >
+                {/* Subtle accent wash from corner on hover */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                  style={{
+                    background: `radial-gradient(circle at 100% 0%, ${intent.accent}18 0%, transparent 60%)`,
+                  }}
+                />
+
                 {/* Top row */}
-                <div className="flex items-start justify-between mb-auto">
-                  <span className={cn(
-                    'text-2xl transition-colors duration-400',
-                    hovered === intent.id ? 'text-brago-gold' : 'text-brago-gold/30',
-                  )}>
+                <div className="relative flex items-start justify-between mb-auto">
+                  <span
+                    className="text-2xl transition-all duration-500"
+                    style={{
+                      color: hovered === intent.id ? intent.accent : 'rgba(196, 173, 135, 0.30)',
+                    }}
+                  >
                     {intent.icon}
                   </span>
                   <span className={cn(
-                    'text-2xs tracking-widest uppercase text-brago-cream/20 font-light transition-opacity duration-400',
+                    'text-2xs tracking-widest uppercase text-brago-cream/25 font-light transition-opacity duration-400',
                     hovered === intent.id ? 'opacity-100' : 'opacity-0',
                   )}>
                     {intent.count}
@@ -128,8 +147,10 @@ export function IntentSelector() {
                 </div>
 
                 {/* Bottom content */}
-                <div className="mt-10">
-                  <h3 className="font-serif text-xl lg:text-2xl text-brago-cream mb-3 group-hover:text-brago-gold transition-colors duration-300">
+                <div className="relative mt-10">
+                  <h3 className="font-serif text-xl lg:text-2xl text-brago-cream mb-3 transition-colors duration-300"
+                    style={{ color: hovered === intent.id ? '#F3EEE6' : undefined }}
+                  >
                     {intent.label}
                   </h3>
                   <p className="text-xs text-brago-cream/35 font-light leading-relaxed group-hover:text-brago-cream/55 transition-colors duration-300 line-clamp-2">
@@ -137,8 +158,11 @@ export function IntentSelector() {
                   </p>
                 </div>
 
-                {/* Gold underline reveal */}
-                <div className="h-px bg-brago-gold mt-5 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                {/* Accent underline reveal — matches intent color */}
+                <div
+                  className="relative h-px mt-5 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
+                  style={{ backgroundColor: intent.accent }}
+                />
               </Link>
             </motion.div>
           ))}

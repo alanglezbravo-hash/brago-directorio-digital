@@ -10,10 +10,10 @@ import { cn } from '@/lib/utils'
 type AccessFilter = 'Todos' | 'Público' | 'Miembros' | 'Privado' | 'Por invitación'
 
 const accessStyles: Record<string, string> = {
-  'Público':         'border-brago-cream/20 text-brago-cream-2',
+  'Público':         'border-brago-celadon/30 text-brago-celadon/90',
   'Miembros':        'border-brago-gold/40 text-brago-gold',
-  'Privado':         'border-brago-cream/30 text-brago-cream-3',
-  'Por invitación':  'border-brago-gold bg-brago-gold/10 text-brago-gold',
+  'Privado':         'border-brago-vino/50 text-brago-rosa/80',
+  'Por invitación':  'border-brago-rosa-fuerte bg-brago-vino/20 text-brago-rosa',
 }
 
 export function EventsSection() {
@@ -32,8 +32,12 @@ export function EventsSection() {
         <AnimatedSection className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-12 lg:mb-16">
           <div>
             <div className="flex items-center gap-4 mb-5">
-              <span className="h-px w-6 bg-brago-gold/50" />
-              <span className="text-2xs tracking-widest-3 uppercase text-brago-gold/70 font-medium">Agenda</span>
+              <span className="h-px w-6 bg-brago-vino/60" />
+              <span className="text-2xs tracking-widest-3 uppercase text-brago-rosa/70 font-medium">Agenda</span>
+              <span className="w-1 h-1 bg-brago-rosa-fuerte rotate-45 inline-block" />
+              <span className="text-2xs tracking-widest uppercase text-brago-cream/30 font-light hidden sm:inline">
+                La ciudad también se entiende por sus noches
+              </span>
             </div>
             <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-brago-cream leading-tight">
               Eventos, Música<br />

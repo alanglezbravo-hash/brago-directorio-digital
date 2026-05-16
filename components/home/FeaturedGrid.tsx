@@ -25,18 +25,22 @@ export function FeaturedGrid() {
             <div className="flex items-center gap-4 mb-5">
               <span className="h-px w-6 bg-brago-gold/50" />
               <span className="text-2xs tracking-widest-3 uppercase text-brago-gold/70 font-medium">Selección editorial</span>
+              <span className="w-1 h-1 bg-brago-terracota rotate-45 inline-block" />
+              <span className="text-2xs tracking-widest uppercase text-brago-cream/30 font-light">
+                BRAGO Selection · {new Date().getFullYear()}
+              </span>
             </div>
             <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-brago-cream leading-tight">
-              Featured Selection
+              Lugares <em className="not-italic text-brago-cream/50">indispensables.</em>
             </h2>
           </div>
           <div className="flex items-center gap-6">
             <p className="text-sm text-brago-cream-3 font-light max-w-xs hidden lg:block">
-              Los lugares que BRAGO considera indispensables en este momento.
+              Lo que BRAGO considera esencial en este momento de la ciudad.
             </p>
             <Link
               href="/directorio"
-              className="text-2xs tracking-widest uppercase font-medium text-brago-gold/70 hover:text-brago-gold transition-colors duration-300 whitespace-nowrap flex items-center gap-2"
+              className="text-2xs tracking-widest uppercase font-medium text-brago-gold/70 hover:text-brago-terracota transition-colors duration-300 whitespace-nowrap flex items-center gap-2"
             >
               Ver todo <span>→</span>
             </Link>
@@ -56,7 +60,7 @@ export function FeaturedGrid() {
               >
                 <Link
                   href={`/negocio/${biz.slug}`}
-                  className="group bg-brago-black-2 flex flex-col overflow-hidden hover:bg-brago-black-3 transition-colors duration-400 block"
+                  className="group bg-brago-black-2 flex flex-col overflow-hidden hover:bg-brago-black-3 transition-colors duration-400 block relative"
                 >
                   {/* Image */}
                   <div className="relative aspect-[4/3] overflow-hidden">
@@ -69,10 +73,17 @@ export function FeaturedGrid() {
                     />
                     <div className="absolute inset-0 bg-brago-black/20 group-hover:bg-brago-black/10 transition-colors duration-500" />
 
+                    {/* Issue number — editorial detail */}
+                    <div className="absolute top-3 left-4">
+                      <span className="font-serif text-2xl text-brago-cream/85 leading-none">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+
                     {/* Tier badge */}
-                    <div className="absolute top-4 left-4">
+                    <div className="absolute bottom-3 left-4">
                       <span className={cn(
-                        'text-2xs tracking-widest uppercase px-2 py-0.5 border font-medium',
+                        'text-2xs tracking-widest uppercase px-2 py-0.5 border font-medium backdrop-blur-sm bg-brago-black/40',
                         tier.class,
                       )}>
                         {tier.label}
@@ -80,9 +91,9 @@ export function FeaturedGrid() {
                     </div>
 
                     {/* Verified mark */}
-                    <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-brago-black/60 backdrop-blur-sm px-2 py-1">
-                      <span className="w-1 h-1 bg-brago-gold rounded-full" />
-                      <span className="text-2xs tracking-widest uppercase text-brago-gold font-medium">Verified</span>
+                    <div className="absolute top-3 right-4 flex items-center gap-1.5 bg-brago-black/60 backdrop-blur-sm px-2 py-1">
+                      <span className="w-1 h-1 bg-brago-terracota rounded-full" />
+                      <span className="text-2xs tracking-widest uppercase text-brago-cream/70 font-medium">Verified</span>
                     </div>
                   </div>
 

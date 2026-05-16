@@ -68,8 +68,9 @@ export function PoweredByHelices() {
           <div>
             <AnimatedSection>
               <div className="flex items-center gap-4 mb-8">
-                <span className="h-px w-6 bg-brago-gold/50" />
-                <span className="text-2xs tracking-widest-3 uppercase text-brago-gold/70 font-medium">Powered by</span>
+                <span className="h-px w-6 bg-brago-malaquita-2/70" />
+                <span className="text-2xs tracking-widest-3 uppercase text-brago-malaquita-2 font-medium">Powered by</span>
+                <span className="w-1 h-1 bg-brago-petroleo rotate-45 inline-block" />
               </div>
 
               <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-brago-cream leading-tight mb-6">

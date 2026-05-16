@@ -10,17 +10,33 @@ const config: Config = {
     extend: {
       colors: {
         brago: {
-          black:      '#080806',
+          // ── Base (negros, marfil, champaña) ──
+          black:      '#0A0A0A',  // Obsidiana
           'black-2':  '#0F0F0D',
-          'black-3':  '#161614',
-          'black-4':  '#1E1E1C',
-          cream:      '#F0EEE8',
-          'cream-2':  '#D8D6D0',
-          'cream-3':  '#A8A69F',
-          gold:       '#C8A96E',
-          'gold-2':   '#B09050',
+          'black-3':  '#151515',  // Grafito profundo
+          'black-4':  '#1C1C1C',
+          cream:      '#F3EEE6',  // Marfil editorial
+          'cream-2':  '#D8D2C5',
+          'cream-3':  '#A8A296',
+          gold:       '#C4AD87',  // Champaña humo
+          'gold-2':   '#B09060',
           'gold-3':   '#8A6E3A',
-          'gold-light': '#D9BF8A',
+          'gold-light': '#D9C7A3',
+
+          // ── V3 paleta patrimonial mexicana ──
+          terracota:    '#B9654D',  // Terracota San Miguel
+          'terracota-2':'#94503D',
+          vino:         '#7A1635',  // Vino patrimonial
+          cadillac:     '#5E1428',  // Cadillac burgundy
+          tapiz:        '#4E5B4A',  // Verde tapiz
+          malaquita:    '#0A4E49',  // Verde malaquita
+          'malaquita-2':'#0E665F',
+          celadon:      '#B8C8B9',  // Verde celadón
+          azul:         '#1978A8',  // Azul mexicano
+          petroleo:     '#0E334B',  // Azul petróleo
+          'petroleo-2': '#143F5C',
+          rosa:         '#E08BA0',  // Rosa empolvado
+          'rosa-fuerte':'#D93B63',  // Rosa mexicano
         },
       },
       fontFamily: {

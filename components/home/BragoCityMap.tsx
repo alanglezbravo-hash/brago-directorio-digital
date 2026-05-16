@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils'
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 type MapFilter = 'Todos' | 'Restaurante' | 'Hotel' | 'Galería' | 'Real Estate' | 'Wellness' | 'Experiencias'
+type MapMode   = 'visitar' | 'residir' | 'invertir' | 'pertenecer'
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -23,8 +24,55 @@ const mapFilters: { id: MapFilter; label: string; icon: string }[] = [
   { id: 'Experiencias', label: 'Experiencias', icon: '◆' },
 ]
 
+// Each mode shifts the visual palette and what the map emphasizes
+const mapModes: {
+  id: MapMode
+  label: string
+  desc: string
+  accent: string       // primary accent for active zones / highlights
+  dotColor: string     // dot tint
+  zoneFill: string     // base zone fill
+  zoneStroke: string   // base zone stroke
+}[] = [
+  {
+    id: 'visitar',
+    label: 'Visitar',
+    desc: 'Para descubrir la ciudad por primera vez — restaurantes, hoteles, galerías.',
+    accent: '#C4AD87',
+    dotColor: '#C4AD87',
+    zoneFill: '#0E334B',
+    zoneStroke: '#0A4E49',
+  },
+  {
+    id: 'residir',
+    label: 'Residir',
+    desc: 'Para quien busca vivir en SMA — colonias, comunidades, cultura local.',
+    accent: '#4E5B4A',
+    dotColor: '#B8C8B9',
+    zoneFill: '#1C2A22',
+    zoneStroke: '#4E5B4A',
+  },
+  {
+    id: 'invertir',
+    label: 'Invertir',
+    desc: 'Lectura territorial — Urban Score, plusvalía, desarrollos, propiedades.',
+    accent: '#B9654D',
+    dotColor: '#B9654D',
+    zoneFill: '#2A1813',
+    zoneStroke: '#B9654D',
+  },
+  {
+    id: 'pertenecer',
+    label: 'Pertenecer',
+    desc: 'Vista para miembros BRAGO — eventos, accesos y la red completa.',
+    accent: '#7A1635',
+    dotColor: '#E08BA0',
+    zoneFill: '#231119',
+    zoneStroke: '#7A1635',
+  },
+]
+
 // Neighborhood SVG polygon zones — 800×500 viewBox
-// Geography roughly follows real SMA layout (N is up)
 const zones = [
   {
     id: 'la-lejona',
@@ -100,7 +148,6 @@ const zones = [
   },
 ]
 
-// Business dots positioned within their neighborhood zones
 const mapDots = [
   // Centro cluster
   { id: 'd01', x: 220, y: 185, cat: 'Hotel' },
@@ -139,32 +186,24 @@ const mapDots = [
   { id: 'd27', x: 145, y: 100, cat: 'Hotel' },
 ]
 
-const catColors: Record<string, string> = {
-  Hotel:        '#C8A96E',
-  Restaurante:  '#D9BF8A',
-  Galería:      '#F0EEE8',
-  Wellness:     '#A8A69F',
-  'Real Estate':'#C8A96E',
-  Experiencias: '#D8D6D0',
-}
-
 const signalColor: Record<string, string> = {
-  Alto:        'text-brago-gold',
+  Alto:        'text-brago-terracota',
   Consolidado: 'text-brago-cream',
   Medio:       'text-brago-cream-2',
-  Emergente:   'text-brago-cream-3',
+  Emergente:   'text-brago-celadon',
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function BragoCityMap() {
   const [activeFilter, setActiveFilter] = useState<MapFilter>('Todos')
+  const [activeMode,   setActiveMode]   = useState<MapMode>('visitar')
   const [hoveredZone,  setHoveredZone]  = useState<string | null>(null)
   const [selectedZone, setSelectedZone] = useState<string | null>(null)
 
+  const mode = mapModes.find((m) => m.id === activeMode)!
   const panelZone = zones.find((z) => z.id === (selectedZone ?? hoveredZone))
 
-  // Businesses shown in the right panel
   const panelItems = businesses
     .filter((b) => b.city === 'San Miguel de Allende')
     .filter((b) => activeFilter === 'Todos' || b.category === activeFilter)
@@ -174,14 +213,30 @@ export function BragoCityMap() {
     activeFilter === 'Todos' || cat === activeFilter
 
   return (
-    <section id="mapa" className="py-20 lg:py-32 bg-brago-black-2">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="mapa" className="py-20 lg:py-32 bg-brago-black-2 relative overflow-hidden">
+
+      {/* Subtle atmospheric gradient backdrop */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-40"
+        style={{
+          background: `radial-gradient(ellipse at 50% 0%, ${mode.zoneStroke}14 0%, transparent 60%)`,
+          transition: 'all 0.8s ease',
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
 
         {/* Header */}
         <AnimatedSection className="mb-12 lg:mb-14">
           <div className="flex items-center gap-4 mb-6">
             <span className="h-px w-6 bg-brago-gold/50" />
-            <span className="text-2xs tracking-widest-3 uppercase text-brago-gold/70 font-medium">BRAGO City Map</span>
+            <span className="text-2xs tracking-widest-3 uppercase text-brago-gold/70 font-medium">
+              BRAGO City Map
+            </span>
+            <span className="w-1 h-1 bg-brago-terracota rotate-45 inline-block" />
+            <span className="text-2xs tracking-widest uppercase text-brago-cream/30 font-light hidden sm:inline">
+              {zones.length} colonias · {mapDots.length} lugares
+            </span>
           </div>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <h2 className="font-serif text-3xl lg:text-4xl xl:text-5xl text-brago-cream leading-tight">
@@ -194,7 +249,50 @@ export function BragoCityMap() {
           </div>
         </AnimatedSection>
 
-        {/* Filter pills */}
+        {/* ── Mode selector — drives the map's palette + intent ───────────── */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+          <div className="flex flex-wrap items-center gap-px bg-brago-cream/8">
+            {mapModes.map((m) => {
+              const isActive = activeMode === m.id
+              return (
+                <button
+                  key={m.id}
+                  onClick={() => setActiveMode(m.id)}
+                  className={cn(
+                    'px-5 py-3 text-2xs tracking-widest uppercase font-medium transition-all duration-400 flex items-center gap-2.5 min-w-[110px] justify-center',
+                  )}
+                  style={{
+                    backgroundColor: isActive ? m.accent : '#0F0F0D',
+                    color: isActive ? '#0A0A0A' : '#A8A296',
+                  }}
+                >
+                  <span
+                    className="w-1.5 h-1.5 rotate-45 inline-block transition-all duration-400"
+                    style={{
+                      backgroundColor: isActive ? '#0A0A0A' : m.accent,
+                    }}
+                  />
+                  {m.label}
+                </button>
+              )
+            })}
+          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={mode.id}
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="text-xs text-brago-cream-3/70 font-light leading-relaxed max-w-sm sm:text-right italic"
+            >
+              {mode.desc}
+            </motion.p>
+          </AnimatePresence>
+        </div>
+
+        {/* Category filter pills */}
         <div className="flex items-center gap-2 flex-wrap mb-6">
           {mapFilters.map((f) => (
             <button
@@ -202,10 +300,12 @@ export function BragoCityMap() {
               onClick={() => setActiveFilter(f.id)}
               className={cn(
                 'flex items-center gap-2 px-4 py-2 text-2xs tracking-widest uppercase font-medium border transition-all duration-300',
-                activeFilter === f.id
-                  ? 'bg-brago-gold border-brago-gold text-brago-black'
-                  : 'border-brago-cream/15 text-brago-cream-3 hover:border-brago-gold/40 hover:text-brago-gold',
               )}
+              style={{
+                backgroundColor: activeFilter === f.id ? mode.accent : 'transparent',
+                color: activeFilter === f.id ? '#0A0A0A' : '#A8A296',
+                borderColor: activeFilter === f.id ? mode.accent : 'rgba(243, 238, 230, 0.15)',
+              }}
             >
               <span>{f.icon}</span>
               <span className="hidden sm:inline">{f.label}</span>
@@ -214,34 +314,31 @@ export function BragoCityMap() {
         </div>
 
         {/* Map + Panel grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-brago-cream/6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-px bg-brago-cream/8">
 
           {/* ── SVG Map (2/3) ─────────────────────────────────────────────── */}
           <div className="lg:col-span-2 bg-brago-black relative overflow-hidden">
             <div className="relative w-full" style={{ paddingBottom: '62.5%' }}>
-              <svg
-                viewBox="0 0 800 500"
-                className="absolute inset-0 w-full h-full"
-              >
+              <svg viewBox="0 0 800 500" className="absolute inset-0 w-full h-full">
                 {/* Fine grid */}
                 {Array.from({ length: 20 }).map((_, i) => (
                   <line key={`h${i}`} x1="0" y1={i * 25} x2="800" y2={i * 25}
-                    stroke="#F0EEE8" strokeOpacity="0.025" strokeWidth="0.5" />
+                    stroke="#F3EEE6" strokeOpacity="0.025" strokeWidth="0.5" />
                 ))}
                 {Array.from({ length: 32 }).map((_, i) => (
                   <line key={`v${i}`} x1={i * 25} y1="0" x2={i * 25} y2="500"
-                    stroke="#F0EEE8" strokeOpacity="0.025" strokeWidth="0.5" />
+                    stroke="#F3EEE6" strokeOpacity="0.025" strokeWidth="0.5" />
                 ))}
 
-                {/* Subtle vignette border */}
+                {/* Outer frame */}
                 <rect x="0" y="0" width="800" height="500"
-                  fill="none" stroke="#C8A96E" strokeOpacity="0.08" strokeWidth="1" />
+                  fill="none" stroke={mode.accent} strokeOpacity="0.12" strokeWidth="1" />
 
-                {/* ── Neighborhood zones ── */}
+                {/* ── Neighborhood zones — driven by active mode ── */}
                 {zones.map((zone) => {
-                  const isActive   = selectedZone === zone.id
-                  const isHover    = hoveredZone  === zone.id
-                  const isHighlighted = isActive || isHover
+                  const isActive = selectedZone === zone.id
+                  const isHover  = hoveredZone  === zone.id
+                  const isHi     = isActive || isHover
                   return (
                     <g
                       key={zone.id}
@@ -254,19 +351,18 @@ export function BragoCityMap() {
                     >
                       <polygon
                         points={zone.points}
-                        fill="#C8A96E"
-                        fillOpacity={isActive ? 0.2 : isHover ? 0.12 : 0.04}
-                        stroke="#C8A96E"
-                        strokeOpacity={isActive ? 0.65 : isHover ? 0.4 : 0.14}
-                        strokeWidth={isActive ? 1.5 : 0.75}
-                        style={{ transition: 'all 0.3s ease' }}
+                        fill={isActive ? mode.accent : mode.zoneFill}
+                        fillOpacity={isActive ? 0.32 : isHover ? 0.22 : 0.14}
+                        stroke={mode.zoneStroke}
+                        strokeOpacity={isActive ? 0.85 : isHover ? 0.55 : 0.30}
+                        strokeWidth={isActive ? 1.6 : 0.9}
+                        style={{ transition: 'all 0.4s ease' }}
                       />
-                      {/* Zone name */}
                       <text
                         x={zone.labelX} y={zone.labelY - 5}
                         textAnchor="middle"
-                        fill="#F0EEE8"
-                        fillOpacity={isHighlighted ? 0.85 : 0.28}
+                        fill="#F3EEE6"
+                        fillOpacity={isHi ? 0.92 : 0.34}
                         fontSize="8.5"
                         fontFamily="'Playfair Display', Georgia, serif"
                         letterSpacing="2.5"
@@ -274,12 +370,11 @@ export function BragoCityMap() {
                       >
                         {zone.name.toUpperCase()}
                       </text>
-                      {/* Urban score — visible on hover/select */}
                       <text
                         x={zone.labelX} y={zone.labelY + 9}
                         textAnchor="middle"
-                        fill="#C8A96E"
-                        fillOpacity={isHighlighted ? 0.75 : 0}
+                        fill={mode.accent}
+                        fillOpacity={isHi ? 0.85 : 0}
                         fontSize="7"
                         fontFamily="'Playfair Display', Georgia, serif"
                         style={{ userSelect: 'none', transition: 'fill-opacity 0.3s ease' }}
@@ -293,22 +388,19 @@ export function BragoCityMap() {
                 {/* ── Business dots ── */}
                 {mapDots.map((dot) => {
                   const visible = isDotVisible(dot.cat)
-                  const color = catColors[dot.cat] ?? '#C8A96E'
                   return (
                     <g key={dot.id}>
-                      {/* Outer pulse ring */}
                       <circle
                         cx={dot.x} cy={dot.y} r="5"
-                        fill={color}
-                        fillOpacity={visible ? 0.12 : 0}
+                        fill={mode.dotColor}
+                        fillOpacity={visible ? 0.14 : 0}
                         style={{ transition: 'fill-opacity 0.4s ease' }}
                       />
-                      {/* Inner dot */}
                       <circle
                         cx={dot.x} cy={dot.y} r="2.2"
-                        fill={color}
-                        fillOpacity={visible ? 0.92 : 0.08}
-                        style={{ transition: 'fill-opacity 0.4s ease' }}
+                        fill={mode.dotColor}
+                        fillOpacity={visible ? 0.95 : 0.08}
+                        style={{ transition: 'all 0.4s ease' }}
                       />
                     </g>
                   )
@@ -316,22 +408,22 @@ export function BragoCityMap() {
 
                 {/* Legend */}
                 <g transform="translate(22, 470)">
-                  <text fill="#C8A96E" fillOpacity="0.3" fontSize="6.5"
+                  <text fill={mode.accent} fillOpacity="0.4" fontSize="6.5"
                     fontFamily="'Inter', system-ui, sans-serif" letterSpacing="2">
-                    BRAGO CITY MAP · SAN MIGUEL DE ALLENDE
+                    BRAGO CITY MAP · MODE: {mode.label.toUpperCase()} · SAN MIGUEL DE ALLENDE
                   </text>
                 </g>
 
                 {/* Compass */}
                 <g transform="translate(756, 468)">
-                  <text fill="#C8A96E" fillOpacity="0.28" fontSize="7"
+                  <text fill={mode.accent} fillOpacity="0.4" fontSize="7"
                     fontFamily="'Inter', system-ui, sans-serif" letterSpacing="1">N</text>
                   <line x1="4" y1="-14" x2="4" y2="-4"
-                    stroke="#C8A96E" strokeOpacity="0.28" strokeWidth="0.6" />
+                    stroke={mode.accent} strokeOpacity="0.4" strokeWidth="0.6" />
                 </g>
               </svg>
 
-              {/* Zone info overlay when selected */}
+              {/* Zone info overlay */}
               <AnimatePresence>
                 {selectedZone && panelZone && (
                   <motion.div
@@ -339,19 +431,20 @@ export function BragoCityMap() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.3 }}
-                    className="absolute top-4 left-4 bg-brago-black/92 backdrop-blur-sm border border-brago-gold/20 px-5 py-4 max-w-[200px]"
+                    className="absolute top-4 left-4 bg-brago-black/92 backdrop-blur-sm px-5 py-4 max-w-[210px]"
+                    style={{ borderLeft: `2px solid ${mode.accent}` }}
                   >
-                    <p className="text-2xs tracking-widest uppercase text-brago-gold/60 font-medium mb-1">Zona</p>
+                    <p className="text-2xs tracking-widest uppercase font-medium mb-1"
+                       style={{ color: mode.accent }}>
+                      Zona
+                    </p>
                     <p className="font-serif text-base text-brago-cream mb-1">{panelZone.name}</p>
                     <div className="flex items-center gap-3">
                       <div>
                         <span className="text-2xs tracking-widest uppercase text-brago-cream-3 font-light">Score </span>
-                        <span className="font-serif text-sm text-brago-gold">{panelZone.score}</span>
+                        <span className="font-serif text-sm" style={{ color: mode.accent }}>{panelZone.score}</span>
                       </div>
-                      <span className={cn(
-                        'text-2xs tracking-widest uppercase font-medium',
-                        signalColor[panelZone.signal],
-                      )}>
+                      <span className={cn('text-2xs tracking-widest uppercase font-medium', signalColor[panelZone.signal])}>
                         {panelZone.signal}
                       </span>
                     </div>
@@ -361,10 +454,9 @@ export function BragoCityMap() {
             </div>
           </div>
 
-          {/* ── Right panel (1/3) ─────────────────────────────────────────── */}
+          {/* ── Right panel ─────────────────────────────────────────────── */}
           <div className="bg-brago-black-2 flex flex-col min-h-[300px] lg:min-h-0">
 
-            {/* Panel header */}
             <div className="border-b border-brago-cream/8 px-6 py-5 flex-shrink-0">
               <AnimatePresence mode="wait">
                 {panelZone ? (
@@ -375,7 +467,8 @@ export function BragoCityMap() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <p className="text-2xs tracking-widest uppercase text-brago-gold/60 font-medium mb-1">
+                    <p className="text-2xs tracking-widest uppercase font-medium mb-1"
+                       style={{ color: mode.accent }}>
                       {panelZone.name}
                     </p>
                     <p className="text-xs text-brago-cream-3 font-light leading-relaxed">
@@ -384,13 +477,14 @@ export function BragoCityMap() {
                   </motion.div>
                 ) : (
                   <motion.div
-                    key="default"
+                    key={`default-${activeMode}`}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                   >
-                    <p className="text-2xs tracking-widest uppercase text-brago-cream-3 font-medium mb-1">
-                      {activeFilter === 'Todos' ? 'Selección activa' : activeFilter}
+                    <p className="text-2xs tracking-widest uppercase font-medium mb-1"
+                       style={{ color: mode.accent }}>
+                      Modo {mode.label}
                     </p>
                     <p className="font-serif text-lg text-brago-cream">
                       {activeFilter === 'Todos' ? 'Todos los lugares' : `BRAGO ${activeFilter}`}
@@ -400,11 +494,10 @@ export function BragoCityMap() {
               </AnimatePresence>
             </div>
 
-            {/* Business list */}
             <div className="flex-1 divide-y divide-brago-cream/6 overflow-auto">
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={activeFilter}
+                  key={`${activeFilter}-${activeMode}`}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -419,12 +512,14 @@ export function BragoCityMap() {
                       className="group px-6 py-4 hover:bg-brago-black-3 transition-colors duration-300 cursor-pointer"
                     >
                       <div className="flex items-center gap-2 mb-1.5">
-                        <span className="w-1 h-1 bg-brago-gold/60 rounded-full flex-shrink-0" />
-                        <span className="text-2xs tracking-widest uppercase text-brago-gold/55 font-medium">
+                        <span className="w-1 h-1 rounded-full flex-shrink-0"
+                          style={{ backgroundColor: mode.accent }} />
+                        <span className="text-2xs tracking-widest uppercase font-medium"
+                          style={{ color: mode.accent, opacity: 0.7 }}>
                           {biz.category}
                         </span>
                       </div>
-                      <p className="font-serif text-sm text-brago-cream group-hover:text-brago-gold transition-colors duration-300 leading-snug">
+                      <p className="font-serif text-sm text-brago-cream group-hover:text-brago-cream transition-colors duration-300 leading-snug">
                         {biz.name}
                       </p>
                       <p className="text-2xs text-brago-cream/30 font-light mt-0.5">
@@ -436,11 +531,11 @@ export function BragoCityMap() {
               </AnimatePresence>
             </div>
 
-            {/* Panel footer */}
             <div className="border-t border-brago-cream/8 px-6 py-4 flex-shrink-0">
               <Link
                 href="/directorio"
-                className="text-2xs tracking-widest uppercase text-brago-gold/60 hover:text-brago-gold transition-colors duration-300 font-medium flex items-center gap-2"
+                className="text-2xs tracking-widest uppercase transition-colors duration-300 font-medium flex items-center gap-2"
+                style={{ color: mode.accent }}
               >
                 Ver directorio completo <span>→</span>
               </Link>
@@ -448,19 +543,15 @@ export function BragoCityMap() {
           </div>
         </div>
 
-        {/* Mode selectors */}
-        <AnimatedSection delay={0.2} className="mt-8 flex flex-wrap items-center gap-3">
-          <span className="text-2xs tracking-widest uppercase text-brago-cream/18 font-light">
-            Explorar como:
-          </span>
-          {['Visitante', 'Residente', 'Inversionista', 'Miembro BRAGO'].map((mode) => (
-            <button
-              key={mode}
-              className="text-2xs tracking-widest uppercase px-3 py-1.5 border border-brago-cream/10 text-brago-cream-3/60 hover:border-brago-gold/30 hover:text-brago-gold/70 transition-all duration-300 font-light"
-            >
-              {mode}
-            </button>
-          ))}
+        {/* Footer note */}
+        <AnimatedSection delay={0.2} className="mt-6 flex flex-wrap items-center justify-between gap-3">
+          <p className="text-2xs tracking-widest uppercase text-brago-cream/20 font-medium">
+            Mapa editorial · No es Google Maps · Es BRAGO leyendo la ciudad
+          </p>
+          <p className="text-2xs tracking-widest uppercase font-light"
+            style={{ color: mode.accent, opacity: 0.55 }}>
+            Modo activo: {mode.label}
+          </p>
         </AnimatedSection>
       </div>
     </section>

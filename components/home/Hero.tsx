@@ -51,6 +51,10 @@ export function Hero() {
           <span className="text-2xs tracking-widest-3 uppercase text-brago-gold font-medium">
             Guía editorial · San Miguel de Allende
           </span>
+          <span className="w-1 h-1 bg-brago-terracota rotate-45 inline-block" />
+          <span className="text-2xs tracking-widest uppercase text-brago-cream/40 font-light">
+            Issue I · {new Date().getFullYear()}
+          </span>
           <span className="h-px w-10 bg-brago-gold/50" />
         </motion.div>
 
@@ -77,15 +81,23 @@ export function Hero() {
           <em className="not-italic text-brago-cream/35">Se interpreta.</em>
         </motion.p>
 
-        {/* Sub-tagline */}
-        <motion.p
+        {/* Sub-tagline + thin terracota underline */}
+        <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.95, ease: [0.25, 0.1, 0.25, 1] }}
-          className="text-sm text-brago-cream/40 font-light mb-12 max-w-lg leading-relaxed"
+          className="mb-12 max-w-lg flex flex-col items-center"
         >
-          Real estate, cultura, hospitalidad e inversión bajo una sola capa de inteligencia editorial.
-        </motion.p>
+          <p className="text-sm text-brago-cream/40 font-light leading-relaxed mb-4 text-center">
+            Real estate, cultura, hospitalidad e inversión bajo una sola capa de inteligencia editorial.
+          </p>
+          <motion.span
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 1.4, delay: 1.4, ease: [0.25, 0.1, 0.25, 1] }}
+            className="block h-px w-24 bg-gradient-to-r from-transparent via-brago-terracota/70 to-transparent origin-center"
+          />
+        </motion.div>
 
         {/* Two-path CTAs — clearly separated */}
         <motion.div

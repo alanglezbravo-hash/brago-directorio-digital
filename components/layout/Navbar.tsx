@@ -54,6 +54,16 @@ export function Navbar() {
             : 'bg-transparent',
         )}
       >
+        {/* Thin terracota accent appears on scroll */}
+        <div
+          className={cn(
+            'absolute bottom-0 left-0 right-0 h-px transition-opacity duration-700',
+            scrolled ? 'opacity-100' : 'opacity-0',
+          )}
+          style={{
+            background: 'linear-gradient(to right, transparent 0%, rgba(196,173,135,0.4) 30%, rgba(185,101,77,0.55) 50%, rgba(196,173,135,0.4) 70%, transparent 100%)',
+          }}
+        />
         {/* Top bar — city signal */}
         <div className={cn(
           'border-b border-brago-cream/6 transition-all duration-500 overflow-hidden',
