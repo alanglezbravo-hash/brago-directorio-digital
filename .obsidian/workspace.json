@@ -1,0 +1,209 @@
+{
+  "main": {
+    "id": "9a8d5dc87b25ee15",
+    "type": "split",
+    "children": [
+      {
+        "id": "80de7b8d88049b12",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0114071eb13c02d5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "SALES_PLAYBOOK.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "SALES_PLAYBOOK"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "bdc98ecb38bd8572",
+    "type": "split",
+    "children": [
+      {
+        "id": "5ce05e1ca1801ee9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8bcd8846ff0e3639",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de archivos"
+            }
+          },
+          {
+            "id": "8d07bfa4cc453cb9",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Buscar"
+            }
+          },
+          {
+            "id": "3037cbe7da2a9cc2",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "246a9ad87cf39bd8",
+    "type": "split",
+    "children": [
+      {
+        "id": "d935d05d36011ffd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a25aad079dd4a2f2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "SALES_PLAYBOOK.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Enlaces entrantes de SALES_PLAYBOOK"
+            }
+          },
+          {
+            "id": "56167e1885f24a2c",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "SALES_PLAYBOOK.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Enlaces salientes de SALES_PLAYBOOK"
+            }
+          },
+          {
+            "id": "b4f8c057383b4665",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "d1694eed956d8d89",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas las propiedades"
+            }
+          },
+          {
+            "id": "e0e848e7813d8ec1",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "SALES_PLAYBOOK.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Esquema de SALES_PLAYBOOK"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Crear nueva base": false
+    }
+  },
+  "active": "8bcd8846ff0e3639",
+  "lastOpenFiles": [
+    "node_modules/fsevents/package.json",
+    "node_modules/fsevents/fsevents.node",
+    "node_modules/fsevents/fsevents.js",
+    "node_modules/fsevents/fsevents.d.ts",
+    "node_modules/fsevents/README.md",
+    "node_modules/fsevents/LICENSE",
+    "node_modules/fsevents",
+    "QUALIFICATION_CHECKLIST.md",
+    "PRICING_STRATEGY_REPORT.md",
+    "CUSTOMER_SEGMENTS.md",
+    "node_modules/@rtsao/scc/README.md",
+    "~$FORME_ESTRATEGICO_BRAGO_SMA.docx",
+    "~$CENSO_URBANO_SMA_BRAGO.xlsx",
+    "INDICE_PROYECTO.txt",
+    "INFORME_ESTRATEGICO_BRAGO_SMA.docx",
+    "CENSO_URBANO_SMA_BRAGO.xlsx",
+    "SALES_PLAYBOOK.md",
+    "EXECUTIVE_SUMMARY.md",
+    "README.md",
+    "node_modules/eslint-plugin-react/README.md"
+  ]
+}

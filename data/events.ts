@@ -1,0 +1,67 @@
+import { Event } from '@/types'
+
+const p = (seed: string, w: number, h: number) =>
+  `https://picsum.photos/seed/${seed}/${w}/${h}`
+
+export const events: Event[] = [
+  {
+    id: 'evt-001',
+    name: 'Cena Privada en Casa Obsidiana',
+    venue: 'Casa Obsidiana',
+    city: 'San Miguel de Allende',
+    date: '22 Mayo 2025',
+    time: '20:00 hrs',
+    type: 'Cena privada',
+    accessLevel: 'Por invitación',
+    image: p('event-cena-obsidiana', 800, 500),
+    description: 'Una cena de ocho tiempos en la terraza de uno de los boutique hotels más selectos de San Miguel. Cocinero de autor, vinos de colección y conversación con criterio.',
+  },
+  {
+    id: 'evt-002',
+    name: 'Open House — Desarrollo Lumbre Residencial',
+    venue: 'Colonia Guadiana',
+    city: 'San Miguel de Allende',
+    date: '25 Mayo 2025',
+    time: '11:00 – 15:00 hrs',
+    type: 'Real estate',
+    accessLevel: 'Miembros',
+    image: p('event-open-house-lumbre', 800, 500),
+    description: 'Presentación exclusiva del Desarrollo Lumbre: 12 unidades de arquitectura contemporánea con materiales locales y vistas a la Parroquia. Preventa con condiciones preferenciales.',
+  },
+  {
+    id: 'evt-003',
+    name: 'Vernissage — Galería Arco',
+    venue: 'Galería Arco',
+    city: 'San Miguel de Allende',
+    date: '30 Mayo 2025',
+    time: '19:00 hrs',
+    type: 'Arte',
+    accessLevel: 'Público',
+    image: p('event-vernissage-arco', 800, 500),
+    description: 'Apertura de "Territorios Invisibles", exposición colectiva de seis artistas del Bajío trabajando en diálogo con el territorio, la identidad y el capital.',
+  },
+  {
+    id: 'evt-004',
+    name: 'Noche en Terraza Diez — Jazz & Mezcal',
+    venue: 'Terraza Diez',
+    city: 'León',
+    date: '31 Mayo 2025',
+    time: '21:00 hrs',
+    type: 'Música en vivo',
+    accessLevel: 'Miembros',
+    image: p('event-terraza-jazz', 800, 500),
+    description: 'Una noche de jazz en vivo con selección de mezcales de autor en el rooftop más sofisticado de León. Dress code: smart casual.',
+  },
+  {
+    id: 'evt-005',
+    name: 'Foro BRAGO — Inversión y Ciudad',
+    venue: 'Hotel Nómada',
+    city: 'San Miguel de Allende',
+    date: '6 Junio 2025',
+    time: '18:00 hrs',
+    type: 'Conferencia',
+    accessLevel: 'Por invitación',
+    image: p('event-foro-brago', 800, 500),
+    description: 'El primer foro BRAGO sobre inversión territorial en el Bajío. Desarrolladores, compradores internacionales, arquitectos y operadores culturales en una misma conversación.',
+  },
+]
