@@ -37,38 +37,38 @@ const mapModes: {
   {
     id: 'visitar',
     label: 'Visitar',
-    desc: 'Para descubrir la ciudad por primera vez — restaurantes, hoteles, galerías.',
-    accent: '#C4AD87',
-    dotColor: '#C4AD87',
-    zoneFill: '#0E334B',
-    zoneStroke: '#0A4E49',
+    desc: 'Para descubrir la ciudad — restaurantes, hoteles, galerías, experiencias.',
+    accent: '#C2A77D',          // cantera
+    dotColor: '#D0B88C',        // cantera-2
+    zoneFill: '#003E7E',        // azul talavera oscuro
+    zoneStroke: '#004C99',
   },
   {
     id: 'residir',
     label: 'Residir',
-    desc: 'Para quien busca vivir en SMA — colonias, comunidades, cultura local.',
-    accent: '#4E5B4A',
-    dotColor: '#B8C8B9',
-    zoneFill: '#1C2A22',
-    zoneStroke: '#4E5B4A',
+    desc: 'Para quien busca vivir aquí — colonias, comunidad, cultura local.',
+    accent: '#0B4F46',          // verde zafiro-2
+    dotColor: '#C2A77D',        // cantera
+    zoneFill: '#063F3A',        // verde zafiro
+    zoneStroke: '#0E5A4F',      // verde zafiro-3
   },
   {
     id: 'invertir',
     label: 'Invertir',
-    desc: 'Lectura territorial — Urban Score, plusvalía, desarrollos, propiedades.',
-    accent: '#B9654D',
-    dotColor: '#B9654D',
-    zoneFill: '#2A1813',
-    zoneStroke: '#B9654D',
+    desc: 'Lectura territorial — Urban Score, plusvalía, desarrollos, patrimonio.',
+    accent: '#A65335',          // terracota
+    dotColor: '#C46A46',        // terracota-3
+    zoneFill: '#3A1A10',        // terracota muy oscura
+    zoneStroke: '#A65335',
   },
   {
     id: 'pertenecer',
     label: 'Pertenecer',
-    desc: 'Vista para miembros BRAGO — eventos, accesos y la red completa.',
-    accent: '#7A1635',
-    dotColor: '#E08BA0',
-    zoneFill: '#231119',
-    zoneStroke: '#7A1635',
+    desc: 'Vista de miembros BRAGO — eventos privados, acceso curado, círculo.',
+    accent: '#4A0F1F',          // vino tinto
+    dotColor: '#C2185B',        // rosa mexicano profundo
+    zoneFill: '#2A0610',        // vino muy oscuro
+    zoneStroke: '#6B1C32',      // vino-3
   },
 ]
 
@@ -187,10 +187,10 @@ const mapDots = [
 ]
 
 const signalColor: Record<string, string> = {
-  Alto:        'text-brago-terracota',
+  Alto:        'text-brago-terracota-3',
   Consolidado: 'text-brago-cream',
   Medio:       'text-brago-cream-2',
-  Emergente:   'text-brago-celadon',
+  Emergente:   'text-brago-cantera',
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────
@@ -227,25 +227,55 @@ export function BragoCityMap() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
 
         {/* Header */}
-        <AnimatedSection className="mb-12 lg:mb-14">
-          <div className="flex items-center gap-4 mb-6">
-            <span className="h-px w-6 bg-brago-gold/50" />
-            <span className="text-2xs tracking-widest-3 uppercase text-brago-gold/70 font-medium">
-              BRAGO City Map
+        <AnimatedSection className="mb-10 lg:mb-12">
+          <div className="flex items-center gap-4 mb-6 flex-wrap">
+            <span className="h-px w-6 bg-brago-cantera/50" />
+            <span className="text-2xs tracking-widest-3 uppercase text-brago-cantera font-medium">
+              Capítulo III · BRAGO City Map
             </span>
-            <span className="w-1 h-1 bg-brago-terracota rotate-45 inline-block" />
+            <span className="w-1 h-1 bg-brago-vino-3 rotate-45 inline-block" />
             <span className="text-2xs tracking-widest uppercase text-brago-cream/30 font-light hidden sm:inline">
               {zones.length} colonias · {mapDots.length} lugares
             </span>
           </div>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-            <h2 className="font-serif text-3xl lg:text-4xl xl:text-5xl text-brago-cream leading-tight">
-              La ciudad, leída<br />
-              <em className="not-italic text-brago-cream/50">desde el criterio.</em>
-            </h2>
-            <p className="text-sm text-brago-cream-3 font-light max-w-sm leading-relaxed">
-              BRAGO no solo lista lugares. Interpreta colonias, flujos y oportunidades. El mapa privado de San Miguel de Allende.
-            </p>
+            <div>
+              <h2 className="font-serif text-3xl lg:text-4xl xl:text-5xl text-brago-cream leading-tight">
+                La ciudad, leída<br />
+                <em className="not-italic text-brago-cream/45">desde el criterio.</em>
+              </h2>
+              <p className="text-xs tracking-widest uppercase text-brago-cantera/60 font-medium italic mt-3">
+                No es Google Maps. Es BRAGO leyendo la ciudad.
+              </p>
+            </div>
+            <div className="flex flex-col items-start lg:items-end gap-3">
+              <p className="text-sm text-brago-cream-3 font-light max-w-sm leading-relaxed text-left lg:text-right">
+                Tablero de control urbano. Modo · ciudad · categoría — todo se cruza.
+              </p>
+              {/* City toggle */}
+              <div className="flex items-center gap-0 border border-brago-cantera/20">
+                {['San Miguel', 'León'].map((c) => {
+                  const isActive = c === 'San Miguel'
+                  return (
+                    <button
+                      key={c}
+                      disabled={c === 'León'}
+                      className={cn(
+                        'px-4 py-2 text-2xs tracking-widest uppercase font-medium transition-all duration-300',
+                        isActive
+                          ? 'bg-brago-cantera text-brago-black'
+                          : 'text-brago-cream/25 cursor-not-allowed',
+                      )}
+                    >
+                      {c}
+                      {c === 'León' && (
+                        <span className="ml-1.5 text-2xs">· próximamente</span>
+                      )}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
           </div>
         </AnimatedSection>
 
@@ -546,12 +576,15 @@ export function BragoCityMap() {
         {/* Footer note */}
         <AnimatedSection delay={0.2} className="mt-6 flex flex-wrap items-center justify-between gap-3">
           <p className="text-2xs tracking-widest uppercase text-brago-cream/20 font-medium">
-            Mapa editorial · No es Google Maps · Es BRAGO leyendo la ciudad
+            Tablero urbano BRAGO · Lectura de ciudad por modo + categoría + colonia
           </p>
-          <p className="text-2xs tracking-widest uppercase font-light"
-            style={{ color: mode.accent, opacity: 0.55 }}>
-            Modo activo: {mode.label}
-          </p>
+          <div className="flex items-center gap-4">
+            <span className="text-2xs tracking-widest uppercase text-brago-cream/15 font-light">Activo</span>
+            <span className="text-2xs tracking-widest uppercase font-medium"
+              style={{ color: mode.accent }}>
+              Modo {mode.label}
+            </span>
+          </div>
         </AnimatedSection>
       </div>
     </section>

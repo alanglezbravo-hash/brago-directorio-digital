@@ -126,8 +126,8 @@ function PlanCard({ plan, className }: { plan: typeof plans[number]; className?:
         className={cn(
           'text-center text-2xs tracking-widest uppercase font-medium px-6 py-3.5 border transition-all duration-400 mt-auto',
           plan.highlight
-            ? 'bg-brago-gold border-brago-gold text-brago-black hover:bg-brago-gold-light'
-            : 'border-brago-gold/40 text-brago-gold hover:bg-brago-gold hover:text-brago-black',
+            ? 'bg-brago-vino border-brago-vino text-brago-cream hover:bg-brago-vino-3'
+            : 'border-brago-cantera/40 text-brago-cantera hover:bg-brago-cantera/10 hover:border-brago-cantera',
         )}
       >
         {plan.cta}

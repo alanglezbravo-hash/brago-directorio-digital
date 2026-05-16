@@ -67,18 +67,21 @@ export function PoweredByHelices() {
           {/* Right — content */}
           <div>
             <AnimatedSection>
-              <div className="flex items-center gap-4 mb-8">
-                <span className="h-px w-6 bg-brago-malaquita-2/70" />
-                <span className="text-2xs tracking-widest-3 uppercase text-brago-malaquita-2 font-medium">Powered by</span>
-                <span className="w-1 h-1 bg-brago-petroleo rotate-45 inline-block" />
+              <div className="flex items-center gap-4 mb-8 flex-wrap">
+                <span className="h-px w-6 bg-brago-zafiro-3" />
+                <span className="text-2xs tracking-widest-3 uppercase text-brago-zafiro-3 font-medium">Capítulo XI · Powered by</span>
+                <span className="w-1 h-1 bg-brago-cantera rotate-45 inline-block" />
               </div>
 
-              <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-brago-cream leading-tight mb-6">
+              <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-brago-cream leading-tight mb-3">
                 Hélices
               </h2>
+              <p className="font-serif italic text-base lg:text-lg text-brago-cream/50 mb-6">
+                Hélices Films visualiza la ciudad.
+              </p>
 
               <p className="text-base text-brago-cream-3 font-light leading-relaxed mb-4 max-w-md">
-                Hélices es el brazo interno de producción visual y territorial de BRAGO. No es una agencia externa. Es parte del ecosistema.
+                BRAGO no solo lista lugares. Los convierte en presencia visual. Hélices es el brazo interno de producción audiovisual y territorial del ecosistema.
               </p>
               <p className="text-sm text-brago-cream/50 font-light leading-relaxed mb-12 max-w-md italic">
                 "Una producción. Múltiples usos dentro del ecosistema BRAGO."

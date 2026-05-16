@@ -70,7 +70,7 @@ export function MembershipEntry() {
             <span className="w-1.5 h-1.5 bg-brago-gold rotate-45 inline-block" />
             <span className="h-px w-10 bg-brago-gold/35" />
           </div>
-          <p className="text-2xs tracking-widest-3 uppercase text-brago-gold/60 font-medium mb-6">Para negocios</p>
+          <p className="text-2xs tracking-widest-3 uppercase text-brago-cantera font-medium mb-6">Capítulo IX · Para negocios</p>
           <h2 className="font-serif text-3xl lg:text-5xl xl:text-6xl text-brago-cream leading-tight mb-6">
             Formar parte de BRAGO<br />
             <em className="not-italic text-brago-cream/40">no es comprar visibilidad.</em>
@@ -99,15 +99,15 @@ export function MembershipEntry() {
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <Link
                   href="/membresias"
-                  className="px-7 py-3.5 bg-brago-gold text-brago-black text-2xs tracking-widest uppercase font-medium hover:bg-brago-gold-light transition-colors duration-400"
+                  className="px-7 py-3.5 bg-brago-vino text-brago-cream text-2xs tracking-widest uppercase font-medium hover:bg-brago-vino-3 transition-colors duration-400"
                 >
-                  Aplicar como miembro
+                  Formar parte de la guía
                 </Link>
                 <Link
                   href="/membresias#founder"
-                  className="px-7 py-3.5 border border-brago-gold/40 text-brago-gold text-2xs tracking-widest uppercase font-medium hover:bg-brago-gold hover:text-brago-black transition-all duration-400"
+                  className="px-7 py-3.5 border border-brago-cantera/50 text-brago-cantera text-2xs tracking-widest uppercase font-medium hover:bg-brago-cantera/10 hover:border-brago-cantera transition-all duration-400"
                 >
-                  Solicitar evaluación Founder
+                  Entrar al círculo Founder
                 </Link>
               </div>
             </AnimatedSection>

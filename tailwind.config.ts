@@ -10,33 +10,62 @@ const config: Config = {
     extend: {
       colors: {
         brago: {
-          // ── Base (negros, marfil, champaña) ──
-          black:      '#0A0A0A',  // Obsidiana
-          'black-2':  '#0F0F0D',
-          'black-3':  '#151515',  // Grafito profundo
-          'black-4':  '#1C1C1C',
-          cream:      '#F3EEE6',  // Marfil editorial
-          'cream-2':  '#D8D2C5',
-          'cream-3':  '#A8A296',
-          gold:       '#C4AD87',  // Champaña humo
-          'gold-2':   '#B09060',
-          'gold-3':   '#8A6E3A',
-          'gold-light': '#D9C7A3',
+          // ── Cadillac base (negros profundos) ──
+          black:      '#050505',  // Cadillac black
+          'black-2':  '#090807',  // Negro humo
+          'black-3':  '#0D0B0A',  // Obsidiana cálida
+          'black-4':  '#14110F',  // Grafito brown
 
-          // ── V3 paleta patrimonial mexicana ──
-          terracota:    '#B9654D',  // Terracota San Miguel
-          'terracota-2':'#94503D',
-          vino:         '#7A1635',  // Vino patrimonial
-          cadillac:     '#5E1428',  // Cadillac burgundy
-          tapiz:        '#4E5B4A',  // Verde tapiz
-          malaquita:    '#0A4E49',  // Verde malaquita
-          'malaquita-2':'#0E665F',
-          celadon:      '#B8C8B9',  // Verde celadón
-          azul:         '#1978A8',  // Azul mexicano
-          petroleo:     '#0E334B',  // Azul petróleo
-          'petroleo-2': '#143F5C',
-          rosa:         '#E08BA0',  // Rosa empolvado
-          'rosa-fuerte':'#D93B63',  // Rosa mexicano
+          // ── Marfil cálido / Warm ivory ──
+          cream:      '#F4EFE7',  // Marfil principal
+          'cream-2':  '#EDE4D8',  // Marfil suave
+          'cream-3':  '#B89B70',  // Cantera-3 oscuro (text secondary)
+
+          // ── Cantera / Piedra colonial ──
+          cantera:    '#C2A77D',  // Cantera principal — borders, líneas
+          'cantera-2':'#D0B88C',  // Cantera clara
+          'cantera-3':'#B89B70',  // Cantera oscura — texto secundario premium
+
+          // ── Gold alias mantenidos (apuntan a cantera para retro-compat) ──
+          gold:       '#C2A77D',
+          'gold-2':   '#B89B70',
+          'gold-3':   '#9C8159',
+          'gold-light':'#D0B88C',
+
+          // ── Vino tinto / Burgundy — acento de poder ──
+          vino:       '#4A0F1F',  // Burgundy profundo
+          'vino-2':   '#5A1328',  // Burgundy medio
+          'vino-3':   '#6B1C32',  // Burgundy claro (hover)
+
+          // ── Terracota / Barro San Miguel ──
+          terracota:    '#A65335',  // Terracota base
+          'terracota-2':'#B45A3C',  // Terracota media
+          'terracota-3':'#C46A46',  // Terracota clara
+
+          // ── Verde Zafiro / Verde profundo (Real Estate · Patrimonio) ──
+          zafiro:     '#063F3A',
+          'zafiro-2': '#0B4F46',
+          'zafiro-3': '#0E5A4F',
+
+          // ── Azul Talavera / Mexicano (Mapa · Cultura) ──
+          azul:       '#003E7E',
+          'azul-2':   '#004C99',
+          'azul-3':   '#0057B8',
+
+          // ── Rosa Mexicano Profundo (Eventos · usar con moderación) ──
+          rosa:       '#C2185B',
+          'rosa-2':   '#D81B60',
+          'rosa-3':   '#B0124F',
+
+          // ── Tokens auxiliares (compat) ──
+          cadillac:   '#5A1328',  // Cadillac burgundy = vino-2
+          tapiz:      '#063F3A',  // Verde tapiz = zafiro
+          malaquita:  '#0B4F46',
+          'malaquita-2':'#0E5A4F',
+          celadon:    '#B8C8B9',
+          petroleo:   '#003E7E',
+          'petroleo-2':'#004C99',
+          'rosa-fuerte':'#C2185B',
         },
       },
       fontFamily: {

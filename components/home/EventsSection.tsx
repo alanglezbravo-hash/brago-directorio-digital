@@ -31,21 +31,21 @@ export function EventsSection() {
 
         <AnimatedSection className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-12 lg:mb-16">
           <div>
-            <div className="flex items-center gap-4 mb-5">
-              <span className="h-px w-6 bg-brago-vino/60" />
-              <span className="text-2xs tracking-widest-3 uppercase text-brago-rosa/70 font-medium">Agenda</span>
-              <span className="w-1 h-1 bg-brago-rosa-fuerte rotate-45 inline-block" />
-              <span className="text-2xs tracking-widest uppercase text-brago-cream/30 font-light hidden sm:inline">
-                La ciudad también se entiende por sus noches
+            <div className="flex items-center gap-4 mb-5 flex-wrap">
+              <span className="h-px w-6 bg-brago-vino-3" />
+              <span className="text-2xs tracking-widest-3 uppercase text-brago-vino-3 font-medium">Capítulo VIII · Vida social</span>
+              <span className="w-1 h-1 bg-brago-rosa rotate-45 inline-block" />
+              <span className="text-2xs tracking-widest uppercase text-brago-cream/30 font-light hidden sm:inline italic">
+                La ciudad también se lee de noche
               </span>
             </div>
             <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-brago-cream leading-tight">
-              Eventos, Música<br />
-              <em className="not-italic text-brago-cream/50">& Vida Social</em>
+              Ver lo que está<br />
+              <em className="not-italic text-brago-cream/45">pasando hoy.</em>
             </h2>
           </div>
           <p className="text-sm text-brago-cream-3 font-light max-w-xs hidden lg:block">
-            La agenda cultural y social curada del Bajío. Arte, gastronomía, música y activaciones privadas.
+            Agenda viva del Bajío. Openings, cenas privadas, música, rooftops y activaciones por invitación.
           </p>
         </AnimatedSection>
 
@@ -128,7 +128,7 @@ export function EventsSection() {
                       <p className="text-2xs tracking-widest uppercase text-brago-cream-3 font-light">{event.date}</p>
                       <p className="text-2xs tracking-widest uppercase text-brago-cream-3/60 font-light mt-0.5">{event.time} · {event.venue}</p>
                     </div>
-                    <button className="text-2xs tracking-widest uppercase font-medium px-4 py-2 border border-brago-gold/40 text-brago-gold hover:bg-brago-gold hover:text-brago-black transition-all duration-400">
+                    <button className="text-2xs tracking-widest uppercase font-medium px-4 py-2 border border-brago-vino-3 text-brago-rosa hover:bg-brago-vino hover:text-brago-cream hover:border-brago-vino transition-all duration-400">
                       Solicitar acceso
                     </button>
                   </div>

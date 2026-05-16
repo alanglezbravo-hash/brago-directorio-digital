@@ -24,14 +24,14 @@ export function FeaturedGrid() {
           <div>
             <div className="flex items-center gap-4 mb-5">
               <span className="h-px w-6 bg-brago-gold/50" />
-              <span className="text-2xs tracking-widest-3 uppercase text-brago-gold/70 font-medium">Selección editorial</span>
-              <span className="w-1 h-1 bg-brago-terracota rotate-45 inline-block" />
+              <span className="text-2xs tracking-widest-3 uppercase text-brago-cantera font-medium">Capítulo IV · Selección editorial</span>
+              <span className="w-1 h-1 bg-brago-vino-3 rotate-45 inline-block" />
               <span className="text-2xs tracking-widest uppercase text-brago-cream/30 font-light">
                 BRAGO Selection · {new Date().getFullYear()}
               </span>
             </div>
             <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-brago-cream leading-tight">
-              Lugares <em className="not-italic text-brago-cream/50">indispensables.</em>
+              Lugares <em className="not-italic text-brago-cream/45">indispensables.</em>
             </h2>
           </div>
           <div className="flex items-center gap-6">
@@ -40,9 +40,9 @@ export function FeaturedGrid() {
             </p>
             <Link
               href="/directorio"
-              className="text-2xs tracking-widest uppercase font-medium text-brago-gold/70 hover:text-brago-terracota transition-colors duration-300 whitespace-nowrap flex items-center gap-2"
+              className="text-2xs tracking-widest uppercase font-medium text-brago-cantera hover:text-brago-vino-3 transition-colors duration-300 whitespace-nowrap flex items-center gap-2"
             >
-              Ver todo <span>→</span>
+              Descubrir selección <span>→</span>
             </Link>
           </div>
         </AnimatedSection>
@@ -123,12 +123,12 @@ export function FeaturedGrid() {
                       </div>
                     )}
 
-                    <div className="mt-auto pt-4 border-t border-brago-cream/8 flex items-center justify-between">
+                    <div className="mt-auto pt-4 border-t border-brago-cantera/12 flex items-center justify-between">
                       <span className="text-2xs tracking-widest uppercase text-brago-cream-3 font-light">
                         {biz.neighborhood}
                       </span>
-                      <span className="text-2xs tracking-widest uppercase text-brago-gold/60 group-hover:text-brago-gold transition-colors duration-300 font-medium">
-                        Ver perfil →
+                      <span className="text-2xs tracking-widest uppercase text-brago-cantera group-hover:text-brago-vino-3 transition-colors duration-300 font-medium">
+                        Ver perfil editorial →
                       </span>
                     </div>
                   </div>

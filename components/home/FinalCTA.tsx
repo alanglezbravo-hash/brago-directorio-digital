@@ -46,21 +46,21 @@ export function FinalCTA() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/membresias"
-              className="px-8 py-4 bg-brago-gold text-brago-black text-2xs tracking-widest uppercase font-medium hover:bg-brago-gold-light transition-colors duration-400"
+              className="px-8 py-4 bg-brago-vino text-brago-cream text-2xs tracking-widest uppercase font-medium hover:bg-brago-vino-3 transition-colors duration-400"
             >
-              Aplicar para entrar
+              Formar parte de la guía
             </Link>
             <Link
               href="/directorio"
-              className="px-8 py-4 border border-brago-cream/25 text-brago-cream text-2xs tracking-widest uppercase font-medium hover:border-brago-cream/50 transition-colors duration-400"
+              className="px-8 py-4 border border-brago-cantera/40 text-brago-cantera text-2xs tracking-widest uppercase font-medium hover:bg-brago-cantera/10 hover:border-brago-cantera transition-colors duration-400"
             >
-              Explorar directorio
+              Explorar la ciudad
             </Link>
             <Link
-              href="/membresias#partnership"
-              className="px-8 py-4 border border-brago-gold/30 text-brago-gold text-2xs tracking-widest uppercase font-medium hover:border-brago-gold/60 transition-colors duration-400"
+              href="/#mapa"
+              className="px-8 py-4 border border-brago-cream/15 text-brago-cream/70 text-2xs tracking-widest uppercase font-medium hover:border-brago-cantera/50 hover:text-brago-cantera transition-colors duration-400"
             >
-              Solicitar partnership
+              Abrir mapa BRAGO
             </Link>
           </div>
 

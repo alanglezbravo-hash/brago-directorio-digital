@@ -9,9 +9,9 @@ import { neighborhoods } from '@/data/neighborhoods'
 import { cn } from '@/lib/utils'
 
 const signalStyles: Record<string, string> = {
-  'Alto':        'text-brago-gold border-brago-gold/40',
-  'Emergente':   'text-brago-cream-2 border-brago-cream/25',
-  'Consolidado': 'text-brago-cream-3 border-brago-cream/15',
+  'Alto':        'text-brago-terracota-3 border-brago-terracota/50 bg-brago-terracota/8',
+  'Emergente':   'text-brago-cantera border-brago-cantera/30',
+  'Consolidado': 'text-brago-cream-2 border-brago-zafiro-3/50 bg-brago-zafiro/20',
   'Medio':       'text-brago-cream-2 border-brago-cream/20',
 }
 
@@ -32,21 +32,25 @@ export function RealEstateSection() {
         {/* Header */}
         <AnimatedSection className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16 lg:mb-20">
           <div>
-            <div className="flex items-center gap-4 mb-5">
-              <span className="h-px w-6 bg-brago-gold/50" />
-              <span className="text-2xs tracking-widest-3 uppercase text-brago-gold/70 font-medium">Inteligencia territorial</span>
+            <div className="flex items-center gap-4 mb-5 flex-wrap">
+              <span className="h-px w-6 bg-brago-zafiro-3/70" />
+              <span className="text-2xs tracking-widest-3 uppercase text-brago-zafiro-3 font-medium">Capítulo V · Patrimonio</span>
+              <span className="w-1 h-1 bg-brago-vino-3 rotate-45 inline-block" />
             </div>
             <h2 className="font-serif text-4xl lg:text-5xl xl:text-6xl text-brago-cream leading-tight">
               Real Estate<br />
-              <em className="not-italic text-brago-cream/50">Intelligence</em>
+              <em className="not-italic text-brago-cream/45">Intelligence</em>
             </h2>
+            <p className="text-xs tracking-widest uppercase text-brago-cantera/55 font-medium italic mt-3 max-w-md">
+              No vendemos metros cuadrados. Leemos formas de vida.
+            </p>
           </div>
           <div className="flex flex-col gap-4 items-start lg:items-end">
             <p className="text-sm text-brago-cream-3 font-light max-w-sm text-left lg:text-right">
-              BRAGO interpreta dónde vivir, comprar e invertir. Colonias, propiedades y dinámicas de mercado leídos desde el criterio.
+              BRAGO interpreta dónde vivir, comprar e invertir. Colonias, propiedades y dinámicas de mercado leídas desde el criterio editorial.
             </p>
             {/* City selector */}
-            <div className="flex items-center gap-0 border border-brago-cream/12 overflow-hidden">
+            <div className="flex items-center gap-0 border border-brago-cantera/20 overflow-hidden">
               {(['SMA', 'León'] as const).map((c) => (
                 <button
                   key={c}
@@ -54,7 +58,7 @@ export function RealEstateSection() {
                   className={cn(
                     'px-5 py-2 text-2xs tracking-widest uppercase transition-all duration-300 font-medium',
                     activeCity === c
-                      ? 'bg-brago-gold text-brago-black'
+                      ? 'bg-brago-zafiro-3 text-brago-cream'
                       : 'text-brago-cream-3 hover:text-brago-cream',
                   )}
                 >
@@ -152,13 +156,13 @@ export function RealEstateSection() {
                     ))}
                   </div>
 
-                  <div className="flex items-center justify-between pt-5 border-t border-brago-cream/8">
+                  <div className="flex items-center justify-between pt-5 border-t border-brago-cantera/12">
                     <div>
                       <p className="text-2xs tracking-widest uppercase text-brago-cream-3 font-light mb-0.5">Precio referencia</p>
                       <p className="text-xs text-brago-cream font-light">{hood.priceRange}</p>
                     </div>
-                    <span className="text-2xs tracking-widest uppercase text-brago-gold/60 group-hover:text-brago-gold transition-colors duration-300 font-medium">
-                      Ver análisis →
+                    <span className="text-2xs tracking-widest uppercase text-brago-zafiro-3 group-hover:text-brago-terracota-3 transition-colors duration-300 font-medium">
+                      Ver lectura de zona →
                     </span>
                   </div>
                 </div>
@@ -169,19 +173,40 @@ export function RealEstateSection() {
 
         {/* Property types row */}
         <AnimatedSection className="mt-16 lg:mt-20">
-          <div className="border-t border-brago-cream/8 pt-12">
-            <p className="text-2xs tracking-widest-2 uppercase text-brago-cream-3 font-medium mb-8">Tipos de propiedad en BRAGO</p>
-            <div className="flex flex-wrap gap-3">
+          <div className="border-t border-brago-cantera/12 pt-12">
+            <p className="text-2xs tracking-widest-2 uppercase text-brago-cantera/70 font-medium mb-8">Tipos de propiedad en BRAGO</p>
+            <div className="flex flex-wrap gap-3 mb-10">
               {[
                 'Casas coloniales', 'Boutique hotels', 'Departamentos premium',
                 'Terrenos', 'Haciendas', 'Desarrollos inmobiliarios',
                 'Renta corta', 'Renta larga', 'Casas patrimoniales',
                 'Propiedades de campo', 'Interiorismo de autor',
               ].map((type) => (
-                <span key={type} className="text-2xs tracking-widest uppercase px-3 py-1.5 border border-brago-cream/12 text-brago-cream-3 hover:border-brago-gold/40 hover:text-brago-gold transition-all duration-300 cursor-pointer font-light">
+                <span key={type} className="text-2xs tracking-widest uppercase px-3 py-1.5 border border-brago-cantera/15 text-brago-cream-3 hover:border-brago-vino-3 hover:text-brago-cantera transition-all duration-300 cursor-pointer font-light">
                   {type}
                 </span>
               ))}
+            </div>
+
+            {/* Patrimonial CTA bar — Cadillac feel */}
+            <div className="bg-gradient-to-r from-brago-zafiro/40 via-brago-black-3 to-brago-vino/30 border border-brago-cantera/15 p-6 lg:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+              <div>
+                <p className="text-2xs tracking-widest uppercase text-brago-cantera/70 font-medium mb-2">
+                  Lectura patrimonial personalizada
+                </p>
+                <p className="font-serif text-xl lg:text-2xl text-brago-cream leading-snug max-w-md">
+                  ¿Buscas comprar, invertir o desarrollar en San Miguel?
+                </p>
+                <p className="text-xs text-brago-cream/45 font-light mt-2 max-w-md leading-relaxed">
+                  Nuestro equipo entrega una lectura editorial de zonas, propiedades y oportunidades adaptada a tu perfil.
+                </p>
+              </div>
+              <a
+                href="/real-estate#lectura"
+                className="self-start sm:self-auto px-7 py-3.5 bg-brago-vino text-brago-cream text-2xs tracking-widest uppercase font-medium hover:bg-brago-vino-3 transition-colors duration-400 whitespace-nowrap"
+              >
+                Solicitar lectura patrimonial →
+              </a>
             </div>
           </div>
         </AnimatedSection>

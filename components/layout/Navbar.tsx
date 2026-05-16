@@ -156,7 +156,7 @@ export function Navbar() {
               ))}
 
               {/* City toggle */}
-              <div className="flex items-center gap-0 border border-brago-cream/12 overflow-hidden">
+              <div className="flex items-center gap-0 border border-brago-cantera/25 overflow-hidden">
                 {(['SMA', 'León'] as const).map((c) => (
                   <button
                     key={c}
@@ -164,7 +164,7 @@ export function Navbar() {
                     className={cn(
                       'px-3 py-1.5 text-2xs tracking-widest uppercase transition-all duration-300',
                       city === c
-                        ? 'bg-brago-gold text-brago-black font-medium'
+                        ? 'bg-brago-cantera text-brago-black font-medium'
                         : 'text-brago-cream-3 hover:text-brago-cream',
                     )}
                   >
@@ -178,15 +178,15 @@ export function Navbar() {
             <div className="flex items-center gap-3">
               <Link
                 href="/directorio"
-                className="hidden lg:inline-flex text-2xs tracking-widest uppercase font-medium px-4 py-2 text-brago-cream-2 hover:text-brago-cream transition-colors duration-300"
+                className="hidden lg:inline-flex text-2xs tracking-widest uppercase font-medium px-4 py-2 text-brago-cream-2 hover:text-brago-cantera transition-colors duration-300"
               >
                 Explorar
               </Link>
               <Link
                 href="/membresias"
-                className="hidden lg:inline-flex text-2xs tracking-widest uppercase font-medium px-5 py-2.5 border border-brago-gold/50 text-brago-gold hover:bg-brago-gold hover:text-brago-black transition-all duration-400"
+                className="hidden lg:inline-flex text-2xs tracking-widest uppercase font-medium px-5 py-2.5 bg-brago-vino text-brago-cream hover:bg-brago-vino-3 transition-all duration-400"
               >
-                Aplicar para entrar
+                Publicar mi negocio
               </Link>
 
               {/* Mobile hamburger */}
